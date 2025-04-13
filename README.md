@@ -1,13 +1,47 @@
-# React + Vite
+Core Features:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Expense table with sorting indicators
 
-Currently, two official plugins are available:
+Functional add expense form
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Search filter functionality
 
-## Expanding the ESLint configuration
+Delete expense capability
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# Code-Challenge-Expense-Tracker
+Responsive styling
+
+Validation:
+
+Required fields in form
+
+Number validation for amounts
+
+Empty state handling
+
+User Experience:
+
+Sorting arrows in table headers
+
+Currency formatting
+
+Date handling
+
+Visual feedback for actions
+
+Code Structure:
+
+Separated components
+
+Clear prop types
+
+Commented functionality
+
+Proper state management
+
+To use this implementation:
+
+Create the three component files (App.jsx, ExpenseForm.jsx, ExpenseTable.jsx)
+
+Add the CSS to App.css
+
+Run npm run dev to start the development server
