@@ -1,36 +1,76 @@
 .app {
-  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 2rem;
-  font-family: Arial, sans-serif;
+  width: 100%;
+}
+
+.form-section {
+  flex: 1;
+  min-width: 400px;
+  overflow-y: auto;
+  padding-right: 1rem;
+}
+
+.results-section {
+  flex: 2;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .expense-form {
   display: grid;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  background: #f8f9fa;
+  gap: 1.25rem;
+  background: white;
   padding: 1.5rem;
   border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.expense-form input {
+.expense-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.expense-form label {
+  font-weight: 500;
+  color: #495057;
+  font-size: 0.9rem;
+}
+
+.expense-form input, 
+.expense-form select,
+.expense-form textarea {
   padding: 0.75rem;
   border: 1px solid #ced4da;
   border-radius: 4px;
   font-size: 1rem;
+  transition: all 0.2s;
+}
+
+.expense-form input:focus, 
+.expense-form select:focus,
+.expense-form textarea:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+  outline: none;
 }
 
 .expense-form button {
   background: #0d6efd;
   color: white;
   border: none;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem;
   cursor: pointer;
   border-radius: 4px;
   font-weight: bold;
   font-size: 1rem;
-  transition: background 0.2s;
+  transition: all 0.2s;
+  margin-top: 0.5rem;
 }
 
 .expense-form button:hover {
@@ -38,7 +78,11 @@
 }
 
 .search-filter {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .search-filter input {
@@ -49,14 +93,16 @@
   font-size: 1rem;
 }
 
-.expense-table {
-  border: 1px solid #dee2e6;
+.expense-table-container {
+  background: white;
   border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 1rem;
+  flex: 1;
+  overflow-y: auto;
 }
 
-.expense-table table {
+.expense-table {
   width: 100%;
   border-collapse: collapse;
 }
@@ -72,9 +118,10 @@
   background: #f8f9fa;
   font-weight: bold;
   color: #495057;
-  text-transform: uppercase;
   font-size: 0.875rem;
-  letter-spacing: 0.5px;
+  position: sticky;
+  top: 0;
+  cursor: pointer;
 }
 
 .expense-table tr:nth-child(even) {
@@ -93,7 +140,7 @@
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
-  transition: background 0.2s;
+  transition: all 0.2s;
 }
 
 .delete-btn:hover {
@@ -103,14 +150,84 @@
 .empty-state {
   text-align: center;
   color: #6c757d;
-  padding: 3rem;
+  padding: 2rem;
   background: #f8f9fa;
   border-radius: 8px;
+}
+
+.summary-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-top: 1.5rem;
+}
+
+.summary-card h3 {
+  margin-top: 0;
+  color: #0d6efd;
+}
+
+.view-tabs {
+  display: flex;
+  gap: 0.5rem;
   margin-top: 1rem;
 }
 
-h1 {
-  color: #f6f7f9;
-  margin-bottom: 1.5rem;
-  font-size: 2rem;
+.view-tabs button {
+  flex: 1;
+  background: #e9ecef;
+  color: #495057;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
 }
+
+.view-tabs button.active {
+  background: #0d6efd;
+  color: white;
+}
+
+.chart-container {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.checkbox-group input {
+  width: auto;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+  font-family: inherit;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.expense-form .form-group {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.expense-form .form-group:nth-child(1) { animation-delay: 0.1s; }
+.expense-form .form-group:nth-child(2) { animation-delay: 0.2s; }
+.expense-form .form-group:nth-child(3) { animation-delay: 0.3s; }
+.expense-form .form-group:nth-child(4) { animation-delay: 0.4s; }
+.expense-form button { animation: fadeIn 0.3s ease-out 0.5s forwards; opacity: 0; }
